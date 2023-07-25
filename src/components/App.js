@@ -15,6 +15,9 @@ const App = () => {
     else if(user.password.length<=0){
       return setError(true);
     }
+    else if(user.password.length<=0 && user.name.length<=0){
+      return setError(true);
+    }
     else{
       setError(false);
       setUser(info);

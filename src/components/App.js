@@ -1,12 +1,42 @@
 
-import React from "react";
+import React,{useState} from "react";
 import './../styles/App.css';
 
+const info={name:'',password:''};
 const App = () => {
+   
+  const[user,setUser]=useState(info);
+  const[error,setError]=useState(false);
+  function submit(e){
+   e.preventDefault();
+    if(user.name.length<=0){
+      setError(true);
+    }
+    else if(user.password.length<=0){
+      setError(true);
+    }
+    else{
+      setError(false);
+      setUser(info);
+    }
+  }
   return (
-    <div>
+    <form onSubmit={submit}>
         {/* Do not remove the main div */}
-    </div>
+       <section>
+        <label htmlFor="name">Username</label>
+       <input type="text" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} id="name"/>
+       </section>
+       <section>
+        <label htmlFor="password">Password</label>
+       <input type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} id="password"/>
+       </section>
+
+       <div id="errorMessage">
+        {error && <p style={{color:'red'}}>Both username and password are required.</p>}
+       </div>
+       <button type="submit">Login</button>
+    </form>
   )
 }
 

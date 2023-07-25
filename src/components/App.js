@@ -1,4 +1,3 @@
-
 import React,{useState} from "react";
 import './../styles/App.css';
 
@@ -35,10 +34,11 @@ const App = () => {
         <label htmlFor="password">Password</label>
        <input type="password" value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} id="password"/>
        </section>
-
-       <div id="errorMessage">
-        {error && <p style={{color:'red'}}>Both username and password are required.</p>}
-       </div>
+       
+       {error &&
+       <div id="errorMessage" style={{color:'red'}}>
+       Both username and password are required.
+       </div>}
        <button type="submit">Login</button>
     </form>
   )

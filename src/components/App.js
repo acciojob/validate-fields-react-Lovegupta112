@@ -10,14 +10,15 @@ const App = () => {
   function submit(e){
    e.preventDefault();
     if(user.name.length<=0){
-      setError(true);
+     return setError(true);
     }
     else if(user.password.length<=0){
-      setError(true);
+      return setError(true);
     }
     else{
       setError(false);
       setUser(info);
+      return ;
     }
   }
   return (
